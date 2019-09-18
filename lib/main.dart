@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'src/app.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() => runApp(MaterialApp(
   theme: ThemeData(
@@ -88,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           )
         ],
@@ -108,13 +109,9 @@ class FirstRoute extends StatelessWidget {
           Card(
             semanticContainer: true,
             clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Column(
-              children : <Widget>[
-                Image.asset(
+            child: Image.asset(
                   "assets/logo_z.png",
                   fit: BoxFit.fill,
-                ),
-              ],
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -135,6 +132,61 @@ class FirstRoute extends StatelessWidget {
             elevation: 5,
             margin: EdgeInsets.only(top: 100, bottom: 100, left: 50, right: 50),
           ),
+          Container(
+            decoration: BoxDecoration(color: Colors.orangeAccent),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 80.0,
+                  child: Image.asset(
+                    "assets/logo_z.png",
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 100.0),
+                ),
+                const SizedBox(height: 30),
+                // RaisedButton(
+                //   onPressed: () {},
+                //   textColor: Colors.white,
+                //   padding: const EdgeInsets.all(0.0),
+                //   child: Container(
+                //     decoration: const BoxDecoration(
+                //       gradient: LinearGradient(
+                //         colors: <Color>[
+                //           Color(0xFF0D47A1),
+                //           Color(0xFF1976D2),
+                //           Color(0xFF42A5F5),
+                //         ],
+                //       ),
+                //     ),
+                //     padding: const EdgeInsets.all(10.0),
+                //     child: const Text(
+                //       'Commencer',
+                //       style: TextStyle(fontSize: 20)
+                //     ),
+                //   ),
+                // ),
+                new MaterialButton(
+                  height: 50.0,
+                  minWidth: 150.0,
+                  color: Colors.green,
+                  splashColor: Colors.teal,
+                  textColor: Colors.white,
+                  child: new Icon(FontAwesomeIcons.signInAlt),
+                  onPressed: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondRoute()),
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -145,23 +197,9 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text("Page de connexion"),
       ),
-      body: Center(
-        child: Card(
-          semanticContainer: true,
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: Image.asset(
-            "assets/logo_z.png",
-            fit: BoxFit.fill,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          elevation: 5,
-          margin: EdgeInsets.all(20),
-        ),
-      ),
+      body: App(),
     );
   }
 }
