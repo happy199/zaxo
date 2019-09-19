@@ -7,6 +7,7 @@ class App extends StatelessWidget{
     return MaterialApp(
       title: "Connecte moi",
       home: Scaffold(
+        resizeToAvoidBottomPadding: false,
         body: LoginScreen(),)
     );
   }

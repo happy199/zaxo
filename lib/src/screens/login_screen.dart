@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
+import '../mixins/validation_mixins.dart';
 class LoginScreen extends StatefulWidget{
     createState(){
       return LoginScreenState();
     }
 }
 
-class LoginScreenState extends State<LoginScreen>{
+class LoginScreenState extends State<LoginScreen> with ValidationMixins{
   final formKey = GlobalKey<FormState>(); 
   Widget build(context){
     return Container(
@@ -34,10 +34,9 @@ class LoginScreenState extends State<LoginScreen>{
         hintText: "example@ex.com",
         // errorText: snapshot.error,
       ),
-      validator: (String value){
-        if (!value.contains("@")){
-          return "Adresse email invalide";
-        }
+      validator: validateEmail,
+      onSaved:(String value){
+        print(value);
       },
     );
   }
@@ -51,11 +50,10 @@ class LoginScreenState extends State<LoginScreen>{
           hintText: "********",
           // errorText: snapshot.error,
         ),
-        validator: (String value){
-          if (value.length < 6){
-             return "Le mot de passe doit contenir au moins 6 caractères";
-          }
-        }
+        validator: validatePassword,
+        onSaved:(String value){
+          print(value);
+        },
       ),
     );
   }
@@ -66,6 +64,7 @@ class LoginScreenState extends State<LoginScreen>{
       onPressed: (){
         if (formKey.currentState.validate()){
           formKey.currentState.save();
+          formKey.currentState.reset();
         }
       },
     );
