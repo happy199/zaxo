@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../blocs/bloc.dart';
 
-final bloc = Bloc();
 class LoginScreen extends StatefulWidget{
     createState(){
       return LoginScreenState();
@@ -18,7 +16,6 @@ class LoginScreenState extends State<LoginScreen>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(margin: EdgeInsets.only(top: .0),),
             emailField(),
             Container(margin: EdgeInsets.only(top: 25.0),),
             passwordField(),
@@ -30,38 +27,36 @@ class LoginScreenState extends State<LoginScreen>{
   }
 
   Widget emailField(){
-    return StreamBuilder(
-      stream: bloc.email,
-      builder: (context, snapshot){
-        return TextField(
-          onChanged: bloc.changeEmail,
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            labelText: "Adresse E-mail",
-            hintText: "example@ex.com",
-            errorText: snapshot.error,
-          ),
-        );
+    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        labelText: "Adresse E-mail",
+        hintText: "example@ex.com",
+        // errorText: snapshot.error,
+      ),
+      validator: (String value){
+        if (!value.contains("@")){
+          return "Adresse email invalide";
+        }
       },
     );
   }
   Widget passwordField(){
-    return StreamBuilder(
-      stream: bloc.password,
-      builder: (context, snapshot){
-        return Container(
-          margin: EdgeInsets.only(bottom: 20.0),
-          child: TextField(
-            onChanged: bloc.changePassword,
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: "Mot de passe ",
-              hintText: "********",
-              errorText: snapshot.error,
-            ),
-          ),
-        );
-      },
+    return Container(
+      margin: EdgeInsets.only(bottom: 20.0),
+      child: TextFormField(
+        obscureText: true,
+        decoration: InputDecoration(
+          labelText: "Mot de passe ",
+          hintText: "********",
+          // errorText: snapshot.error,
+        ),
+        validator: (String value){
+          if (value.length < 6){
+             return "Le mot de passe doit contenir au moins 6 caractères";
+          }
+        }
+      ),
     );
   }
   Widget submitButton(){
