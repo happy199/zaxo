@@ -8,7 +8,7 @@ class App extends StatelessWidget{
       title: "Connecte moi",
       home: Scaffold(
         resizeToAvoidBottomPadding: false,
-        body: LoginScreen(),)
+        body: SingleChildScrollView(child:LoginScreen())),
     );
   }
 }

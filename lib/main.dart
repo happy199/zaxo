@@ -3,15 +3,21 @@ import 'src/app.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() => runApp(MaterialApp(
-  theme: ThemeData(
-    primaryColor: Colors.red,
-    accentColor: Colors.yellowAccent
-    ),
-  debugShowCheckedModeBanner: false,
-  home: SplashScreen(),
-));
+void main() => runApp(new MyApp());
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        accentColor: Colors.yellowAccent
+        ),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
+  }
+}
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -20,7 +26,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Timer(Duration(
       seconds: 5), 
