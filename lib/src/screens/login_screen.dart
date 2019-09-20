@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../blocs/bloc.dart';
 
 final bloc = Bloc();
@@ -13,13 +14,13 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height,
-        child: PageView(
-          controller: _controller,
-          physics: new AlwaysScrollableScrollPhysics(),
-          children: <Widget>[loginPage(), homePage(), signupPage()],
-          scrollDirection: Axis.horizontal,
-        ));
+    height: MediaQuery.of(context).size.height,
+    child: PageView(
+      controller: pageController,
+      physics: new AlwaysScrollableScrollPhysics(),
+      children: <Widget>[loginPage(), homePage(), signupPage()],
+      scrollDirection: Axis.horizontal,
+    ));
   }
   @override
   void initState() {
@@ -34,7 +35,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
         image: DecorationImage(
           colorFilter: new ColorFilter.mode(
               Colors.black.withOpacity(0.1), BlendMode.dstATop),
-          image: AssetImage('assets/images/mountains.jpg'),
+          image: AssetImage("assets/logo_z.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -160,17 +161,17 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
         image: DecorationImage(
           colorFilter: new ColorFilter.mode(
               Colors.black.withOpacity(0.05), BlendMode.dstATop),
-          image: AssetImage('assets/images/mountains.jpg'),
+          image: AssetImage("assets/logo_z.png"),
           fit: BoxFit.cover,
         ),
       ),
       child: new Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(120.0),
+            padding: EdgeInsets.all(12),
             child: Center(
               child: Icon(
-                Icons.headset_mic,
+                Icons.restore_from_trash,
                 color: Colors.redAccent,
                 size: 50.0,
               ),
@@ -240,7 +241,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                 child: new Padding(
                   padding: const EdgeInsets.only(left: 40.0),
                   child: new Text(
-                    "PASSWORD",
+                    "MOT DE PASSE",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.redAccent,
@@ -302,7 +303,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                 padding: const EdgeInsets.only(right: 20.0),
                 child: new FlatButton(
                   child: new Text(
-                    "Forgot Password?",
+                    "Mots de passe oublié?",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.redAccent,
@@ -338,7 +339,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                         children: <Widget>[
                           new Expanded(
                             child: Text(
-                              "LOGIN",
+                              "CONNEXION",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
@@ -366,7 +367,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                   ),
                 ),
                 Text(
-                  "OR CONNECT WITH",
+                  "OU SE CONNECTER AVEC",
                   style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
@@ -415,8 +416,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                                             MainAxisAlignment.spaceEvenly,
                                         children: <Widget>[
                                           Icon(
-                                            const IconData(0xea90,
-                                                fontFamily: 'icomoon'),
+                                            FontAwesomeIcons.facebook,
                                             color: Colors.white,
                                             size: 15.0,
                                           ),
@@ -469,8 +469,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                                             MainAxisAlignment.spaceEvenly,
                                         children: <Widget>[
                                           Icon(
-                                            const IconData(0xea88,
-                                                fontFamily: 'icomoon'),
+                                            FontAwesomeIcons.google,
                                             color: Colors.white,
                                             size: 15.0,
                                           ),
@@ -478,8 +477,9 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                                             "GOOGLE",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold),
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -510,17 +510,17 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
         image: DecorationImage(
           colorFilter: new ColorFilter.mode(
               Colors.black.withOpacity(0.05), BlendMode.dstATop),
-          image: AssetImage('assets/images/mountains.jpg'),
+          image: AssetImage("assets/logo_z.png"),
           fit: BoxFit.cover,
         ),
       ),
       child: new Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(100.0),
+            padding: EdgeInsets.all(10.0),
             child: Center(
               child: Icon(
-                Icons.headset_mic,
+                Icons.restore_from_trash,
                 color: Colors.redAccent,
                 size: 50.0,
               ),
@@ -561,14 +561,21 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 new Expanded(
-                  child: TextField(
-                    obscureText: true,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'samarthagarwal@live.com',
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
+                  child: StreamBuilder(
+                    stream: bloc.email,
+                    builder: (context, snapshot){
+                      return TextField(
+                        onChanged: bloc.changeEmail,
+                        keyboardType: TextInputType.emailAddress,
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'samarthagarwal@live.com',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          errorText: snapshot.error,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -583,7 +590,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                 child: new Padding(
                   padding: const EdgeInsets.only(left: 40.0),
                   child: new Text(
-                    "PASSWORD",
+                    "MOT DE PASSE",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.redAccent,
@@ -612,14 +619,24 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 new Expanded(
-                  child: TextField(
-                    obscureText: true,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: '*********',
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
+                  child: StreamBuilder(
+                    stream: bloc.password,
+                    builder: (context, snapshot){
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 20.0),
+                        child: TextField(
+                          onChanged: bloc.changePassword,
+                          obscureText: true,
+                          textAlign: TextAlign.left,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: '*********',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            errorText: snapshot.error,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -634,7 +651,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                 child: new Padding(
                   padding: const EdgeInsets.only(left: 40.0),
                   child: new Text(
-                    "CONFIRM PASSWORD",
+                    "CONFIRMER MOT DE PASSE",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.redAccent,
@@ -663,14 +680,24 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 new Expanded(
-                  child: TextField(
-                    obscureText: true,
-                    textAlign: TextAlign.left,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: '*********',
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
+                  child: StreamBuilder(
+                    stream: bloc.password,
+                    builder: (context, snapshot){
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 20.0),
+                        child: TextField(
+                          onChanged: bloc.changePassword,
+                          obscureText: true,
+                          textAlign: TextAlign.left,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: '*********',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            errorText: snapshot.error,
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -686,7 +713,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                 padding: const EdgeInsets.only(right: 20.0),
                 child: new FlatButton(
                   child: new Text(
-                    "Already have an account?",
+                    "J'ai dejà un compte?",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.redAccent,
@@ -722,7 +749,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                         children: <Widget>[
                           new Expanded(
                             child: Text(
-                              "SIGN UP",
+                              "S'INSCRIRE",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
@@ -743,7 +770,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
   }
 
   gotoLogin() {
-    _controller.animateToPage(
+    pageController.animateToPage(
       0,
       duration: Duration(milliseconds: 800),
       curve: Curves.bounceOut,
@@ -751,13 +778,13 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
   }
 
   gotoSignup() {
-    _controller.animateToPage(
+    pageController.animateToPage(
       2,
       duration: Duration(milliseconds: 800),
       curve: Curves.bounceOut,
     );
   }
 
-  PageController _controller = new PageController(initialPage: 1, viewportFraction: 1.0);
+ final PageController pageController = new PageController(initialPage: 1, viewportFraction: 1.0);
 
 }
