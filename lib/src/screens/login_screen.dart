@@ -31,7 +31,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
     return new Container(
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-        color: Colors.redAccent,
+        color: Colors.greenAccent,
         image: DecorationImage(
           colorFilter: new ColorFilter.mode(
               Colors.black.withOpacity(0.1), BlendMode.dstATop),
@@ -83,7 +83,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                   child: new OutlineButton(
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0)),
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     highlightedBorderColor: Colors.white,
                     onPressed: () => gotoSignup(),
                     child: new Container(
@@ -136,7 +136,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                               "Connexion",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.redAccent,
+                                  color: Colors.greenAccent,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -172,7 +172,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             child: Center(
               child: Icon(
                 Icons.restore_from_trash,
-                color: Colors.redAccent,
+                color: Colors.greenAccent,
                 size: 50.0,
               ),
             ),
@@ -186,7 +186,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "EMAIL",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                   ),
@@ -201,7 +201,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -244,7 +244,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "MOT DE PASSE",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                   ),
@@ -259,7 +259,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -306,7 +306,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "Mots de passe oublié?",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                     textAlign: TextAlign.end,
@@ -327,7 +327,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     onPressed: () => {},
                     child: new Container(
                       padding: const EdgeInsets.symmetric(
@@ -521,7 +521,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             child: Center(
               child: Icon(
                 Icons.restore_from_trash,
-                color: Colors.redAccent,
+                color: Colors.greenAccent,
                 size: 50.0,
               ),
             ),
@@ -535,7 +535,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "EMAIL",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                   ),
@@ -550,7 +550,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -593,7 +593,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "MOT DE PASSE",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                   ),
@@ -608,7 +608,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -654,7 +654,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "CONFIRMER MOT DE PASSE",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                   ),
@@ -669,7 +669,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -716,7 +716,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     "J'ai dejà un compte?",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.greenAccent,
                       fontSize: 15.0,
                     ),
                     textAlign: TextAlign.end,
@@ -737,7 +737,7 @@ class LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin{
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
-                    color: Colors.redAccent,
+                    color: Colors.greenAccent,
                     onPressed: () => {},
                     child: new Container(
                       padding: const EdgeInsets.symmetric(

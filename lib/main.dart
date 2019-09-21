@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.red,
+        primaryColor: Colors.greenAccent,
         accentColor: Colors.yellowAccent
         ),
       debugShowCheckedModeBanner: false,
@@ -202,7 +202,7 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Page de connexion"),
+        title: Text("Authentification"),
       ),
       body: App(),
     );
