@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:zaxo/src/users.dart';
+
 import 'src/app.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -188,7 +190,21 @@ class FirstRoute extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => SecondRoute()),
                     );
                   },
-                )
+                ),
+                new MaterialButton(
+                  height: 50.0,
+                  minWidth: 150.0,
+                  color: Colors.red,
+                  splashColor: Colors.teal,
+                  textColor: Colors.white,
+                  child: new Icon(FontAwesomeIcons.users),
+                  onPressed: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ThirdRoute()),
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -205,6 +221,18 @@ class SecondRoute extends StatelessWidget {
         title: Text("Authentification"),
       ),
       body: App(),
+    );
+  }
+}
+
+class ThirdRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Utilisateurs"),
+      ),
+      body: User(),
     );
   }
 }
